@@ -40,8 +40,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 text-center mx-auto">
-                            <img (click)="inputFile.click()" src="./assets/img/faces/avatar.jpg" alt="Circle Image" class="rounded-circle img-fluid" width="90px">
-                                    <input type="file" #inputFile (change)="change( $event )" style="display: none">  
+                            <img  [src]="image" (click)="inputFile.click()"  alt="Circle Image" class="rounded-circle img-fluid" width="90px">
+                                    <input type="file" #inputFile (change)="change($event)" style="display: none">  
  
                         </div>
                     </div>
