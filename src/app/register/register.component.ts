@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
       phone : new FormControl('', [Validators.required,Validators.maxLength(8),Validators.minLength(8)]),
       email : new FormControl('', [Validators.email, Validators.required]),
       password : new FormControl('', [Validators.required,Validators.minLength(5),Validators.pattern('(?=.*[A-Z])')]),
-      confirmPassword : new FormControl('', [Validators.required,Validators.minLength(5),Validators.pattern('(?=.*[A-Z])')])
+      confirmPassword : new FormControl('', [Validators.required, this.passValidator])
     },
     )
    }
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  change(event){
+  getImg(event){
     console.log(event.target.files[0]);
     let reader = new FileReader();
    reader.readAsDataURL(event.target.files[0]);
@@ -36,6 +36,23 @@ export class RegisterComponent implements OnInit {
     this.image = reader.result;
   }
   }
+
+  passValidator(control: AbstractControl) {
+    if (control && (control.value !== null || control.value !== undefined)) {
+        const confirmpwd = control.value;
+        const passControl = control.root.get("password");
+        console.log('pass nroml', passControl);
+        console.log('pass confirmmmmm', confirmpwd);
+        if (passControl) {
+            const passValue = passControl.value;
+            if (passValue !== confirmpwd || passValue === '') {
+                return {
+                    isError: true,
+                };
+            }
+        }
+    }
+}
 
   
   btnRegister(){

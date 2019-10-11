@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="col-6 text-center mx-auto">
                             <img  [src]="image" (click)="inputFile.click()"  alt="Circle Image" class="rounded-circle img-fluid" width="90px">
-                                    <input type="file" #inputFile (change)="change($event)" style="display: none">  
+                                    <input type="file" #inputFile (change)="getImg($event)" style="display: none">  
  
                         </div>
                     </div>
