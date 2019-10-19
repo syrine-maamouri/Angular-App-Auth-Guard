@@ -8,6 +8,9 @@ import { RegisterComponent } from './register/register.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamComponent } from './team/team.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthApiService } from './services/auth-api-service.service';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { TeamComponent } from './team/team.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule  
+    ReactiveFormsModule,
+    HttpClientModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
